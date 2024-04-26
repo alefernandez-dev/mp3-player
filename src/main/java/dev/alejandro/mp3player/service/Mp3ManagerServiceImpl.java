@@ -53,7 +53,7 @@ public class Mp3ManagerServiceImpl implements Mp3ManagerService{
     }
 
     @Override
-    public void deleteMusic(String fileName) throws FileNotFoundException {
+    public void deleteMusic(String fileName) throws FileNotFoundException, FileDeleteException {
         var musicFile = new File(musicDirectory + "/" + fileName);
         if (!musicFile.exists()) {
             throw FileNotFoundException.throwException();

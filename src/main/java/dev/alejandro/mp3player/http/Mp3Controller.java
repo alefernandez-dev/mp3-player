@@ -1,10 +1,7 @@
 package dev.alejandro.mp3player.http;
 
 import dev.alejandro.mp3player.service.*;
-import dev.alejandro.mp3player.service.exception.FileNotFoundException;
-import dev.alejandro.mp3player.service.exception.FileReadException;
-import dev.alejandro.mp3player.service.exception.FileWriteException;
-import dev.alejandro.mp3player.service.exception.InvalidExtensionException;
+import dev.alejandro.mp3player.service.exception.*;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +39,7 @@ public class Mp3Controller {
     }
 
     @DeleteMapping("/{fileName}")
-    public ResponseEntity<?> deleteMusic(@PathVariable String fileName) throws FileNotFoundException {
+    public ResponseEntity<?> deleteMusic(@PathVariable String fileName) throws FileNotFoundException, FileDeleteException {
         managerService.deleteMusic(fileName);
         return ResponseEntity.ok().build();
     }
